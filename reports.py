@@ -22,7 +22,7 @@ headers={
     "Content-Type": "application/x-www-form-urlencoded"
 }
 
-SESSIONID = "0E6EF88C5BE69C37B536BFD783317E5A"
+SESSIONID = "5F479882D0CB076A3E3AECC98EBD038E"
 
 def sleep(s=1,e=2):
     s = random.randint(s,e)
@@ -64,46 +64,25 @@ def shenzhenReports():
             continue
         name = groups.group(1)
         names.add(name)
-    
-    # <iframe  name="首页" src="/SOCSP_O/njnbMf/toIndex?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=483cb448150749c4876f79a471960aee&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="基本信息" src="/SOCSP_O/njnbMf/toJbxx?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=e75f654cbe124a7992e55add4066ae35&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="监事会信息" src="/SOCSP_O/njnbMf/toZzjsJs?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=29ab3ebe15734ae1a2f198a3f33ceda6&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="组织建设一" src="/SOCSP_O/njnbMf/toZzjs?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=d7c9509e77d1451db95751fb6a8b1f18&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="理事会信息" src="/SOCSP_O/njnbMf/toLShxx?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=d46af5dd7b9c479faadf0ca8d8025569&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="组织建设二" src="/SOCSP_O/njnbMf/toZzjs2?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=aaa5fb5e9652457cb7c24ee2ab17180f&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="内部制度建设" src="/SOCSP_O/njnbMf/toNbzdjs?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=20239a9b95844778a74ec40b939c55d7&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="党建情况" src="/SOCSP_O/publicnjnb/toDjqk?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=ca7a850398ce4abca104a86a419e75aa&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="工作采集表" src="/SOCSP_O/njnbMf/toGzcjb?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=dfd720d52d3c469d9b30c888c536f71c&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="监督管理" src="/SOCSP_O/njnbMf/toJdgl?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=1d439d63e33e45908438999ecfef5b1e&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="资产负债表" src="/SOCSP_O/publicnjnb/topublicZcfz?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=31968c50628b456a9869de3a84f4d05d&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="业务活动表" src="/SOCSP_O/publicnjnb/topublicYwhd?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=7972c934d8f34a0cafb60ed4f231d907&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="现金流量表" src="/SOCSP_O/publicnjnb/topublicXjll?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=c17f07c63da0422686b5a5c9583f6cce&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="附注" src="/SOCSP_O/njnbMf/toFz?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=2f36a1f054214ac085078576b15f4aa5&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="净资产" src="/SOCSP_O/njnbMf/toJzc?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=0bdaae1500534a55b760f6b0c85c364c&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="政府补助收入" src="/SOCSP_O/njnbMf/toZfbzsr?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=fb516bd0bbbb4db39955ee9893e641c5&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="年度公益活动" src="/SOCSP_O/njnbMf/toNdgyhd?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=0fef381cd7104541898e10e2494dd17f&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="年度工作总结" src="/SOCSP_O/njnbMf/toNdgzzj?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=83202c84780c4b98962927bb6a05bcf8&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="公益支出比例" src="/SOCSP_O/njnbShtt/toWelfareForm?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=72086076a7b94cc3be72f88c4ef59b84&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="业务开展情况" src="/SOCSP_O/njnbJjh/toYwkzqk?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=089d349df95645d783779ab079face11&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="公益项目收支" src="/SOCSP_O/njnbMf/toGyxmsz?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=da10eca2d46e4ef6a708d5430a09094c&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
-    # <iframe  name="公益活动支出" src="/SOCSP_O/publicnjnb/toGyhdzc?declareId=04fde8135bd04309a6b5c864fd5e1dc9&formId=2206dc51892b455d87fde7dbffd68154&print=1&dy=1"  marginheight="0" marginwidth="0" frameborder="0" scrolling="none" style="visibility:hidden;width:100%; overflow:auto; border-bottom:0px solid blue" ></iframe>
 
     #url = "http://218.17.83.146:9009/SOCSP_O/publicnjnb/printAll?declareId="
     url = "http://218.17.83.146:9009"
 
-    settings = [
-        ("资产负债表","/SOCSP_O/publicnjnb/topublicZcfz?formId=31968c50628b456a9869de3a84f4d05d&print=1&dy=1&declareId="),
-        ("业务活动表","/SOCSP_O/publicnjnb/topublicYwhd?formId=089d349df95645d783779ab079face11&print=1&dy=1&declareId=")
-    ]
     failed = 0
 
-
-    # from selenium import webdriver
-    # chromeOptions = webdriver.ChromeOptions()
-    # chromeOptions.add_argument('--proxy-server=http://127.0.0.1:12639')
-    # #chromeOptions.add_argument("user-data-dir=C:\\Users\\jiakaixiao\\AppData\\Local\\Google\\Chrome\\User Data\\Default")
-    # #chromeOptions.add_argument("--user-data-dir='C:/Users/jiakaixiao/AppData/Local/Google/Chrome/User Data/Default'");
-    # driver= webdriver.Chrome("E:/chromedriver_win32/chromedriver.exe",options=chromeOptions)
+    sites = [
+        ("基本信息","/SOCSP_O/njnbJjh/toJbxx\?.*print=1&dy=1"),
+        ("机构建设一（理事会）","/SOCSP_O/njnbJjh/toLshcy\?.*print=1&dy=1"),
+        ("机构建设一（监事会）","/SOCSP_O/njnbJjh/tojshcy\?.*print=1&dy=1"),
+        ("机构建设二","/SOCSP_O/njnbJjh/tojg2\?.*print=1&dy=1"),
+        ("机构建设三","/SOCSP_O/njnbJjh/toJg3\?.*print=1&dy=1"),
+        ("机构建设四","/SOCSP_O/publicnjnb/toDjqk\?.*print=1&dy=1"),
+        ("机构建设六","/SOCSP_O/njnbJjh/toJjhnbJgjs6\?.*print=1&dy=1"),
+        ("业务活动一","/SOCSP_O/njnbJjh/toYwhdqk1\?.*print=1&dy=1"),
+        ("业务活动五","/SOCSP_O/njnbJjh/toYwhd5Form\?.*print=1&dy=1"),
+        ("资产负债","/SOCSP_O/publicnjnb/topublicZcfz\?.*print=1&dy=1"),
+        ("业务活动","/SOCSP_O/publicnjnb/topublicYwhd\?.*print=1&dy=1"),
+    ]
 
     for i,(name,did) in enumerate(zip(agents.SOCIETY_NAME,agents.DECLAREID)):
         
@@ -125,46 +104,31 @@ def shenzhenReports():
             if r.status_code != 200:
                 continue
 
-            zcfz = None
-            p = "/SOCSP_O/publicnjnb/topublicZcfz.*dy=1"
-            g = re.search(p, r.text)
-            if g:
-                zcfz = url+g.group(0)
+            content = r.text
+            for sname, spattern in sites:
+                g = re.search(spattern, content)
+                if g is None:
+                    break
+                link = url + g.group(0)
 
-            ywhd = None
-            p = "/SOCSP_O/publicnjnb/topublicYwhd.*dy=1"
-            g = re.search(p, r.text)
-            if g:
-                ywhd = url+g.group(0)
+                print("=" * 120)
+                print("Crawling for <{}:{}>".format(sname, link))
 
-            if not zcfz or not ywhd:
-                continue
-
-            print("=" * 120)
-            print("Crawling for <{}>".format(name))
-            for tname, link in [("资产负债表",zcfz),("业务活动表",ywhd)]:
-                print("<{}>: {}".format(tname, link))
                 r = requests.get(link, proxies = proxy, headers = headers, cookies={"JSESSIONID": SESSIONID})
                 if r.status_code != 200:
                     break
                 
-                contents.append((tname, r.text))
-            
-            # driver.implicitly_wait(10)
-            # driver.get(url_)
-            # driver.add_cookie({"name": "JSESSIONID", "value": SESSIONID, "domain": "218.17.83.146", "path": "/SOCSP_O"})
-            # time.sleep(5)
-            # contents.append((tname, driver.page_source))
+                contents.append((sname, r.text))
+                sleep()
         except Exception as ex:
             failed += 1
         finally:
-            if len(contents) == 2:
+            if len(contents) == len(sites):
                 for tname, content in contents:
                     with open("{}/{}-{}.html".format(path,name,tname),"w", encoding="utf8") as writer:
                         writer.write(content)
         # if i>=2:
         #     break
-        sleep()
 
     #driver.quit()
     print("Failed files in total <{}>".format(failed))
@@ -173,85 +137,372 @@ def parse_reports():
     path = "reports"
     path = "funds"
 
+    ofile = "declare_ids_2018.csv"
+    agents = pd.read_csv(ofile)
+    agents = agents[agents.SOCIETY_NAME.map(lambda r: isinstance(r,str) and "基金会" in r)]
+
+    from collections import defaultdict
+    
     failed = 0
-    records = {}
-    for i, file in enumerate(os.listdir(path)):
-        if os.path.isdir(os.path.join(path,file)):
-            continue
-        groups = re.search("(.*)-(.*).html", file)
-        if groups is None:
-            continue
-        name = groups.group(1)
-        tname = groups.group(2)
+    tabs = defaultdict(list)
+
+    # def safe_parse(func):
+    #     def func_(path, name):
+    #         try:
+    #             return func(path, name)
+    #         except Exception as ex:
+    #             failed.add("{}：<{}>".format(name, func.__name__))
+
+    #         return None
+    #     return func_
+
+    def load_html(path,name,tname):
+        file = "{}/{}-{}.html".format(path,name,tname)
+        print("Parsing <{}>".format(file))
+
+        with open(file,"r",encoding="utf8") as reader:
+            data = reader.read()
         
+        soup = BS(data, "html.parser")
+        return soup
+
+    def parse_zcfz(path,name):
+        soup = load_html(path,name,"资产负债")
+        rows = soup.find("table", {"id": "tablepr"}).findAll("tr")
+
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+        fields = [line[s:s+4] for line in fields for s in (0,4)]
+
+        maps = {
+            "105": "限制性净资产",
+            "110": "净资产合计",
+            "101": "非限制性净资产",
+            "2": "短期投资",
+            "21": "长期股权投资",
+            "24": "长期债权投资",
+            "15": "一年内到期的长期债权投资",
+            "60": "资产总计",
+        }
+        values = {"机构名称": name}
+        for _,rid,s,e in fields:
+            rid = rid.strip()
+            if rid in maps:
+                values["{}-年初数".format(maps[rid])] = s
+                values["{}-期末数".format(maps[rid])] = e
+        return values
+
+
+    def parse_ywhd(path,name):
+        soup = load_html(path,name,"业务活动")
+        rows = soup.find("table", {"id": "tablepr"}).findAll("tr")
+
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+        fields = [v for v in fields if len(v)==8]
+        maps = {
+            "1": "捐赠收入",
+            "2": "会费收入",
+            "3": "提供服务收入",
+            "4": "商品销售收入",
+            "5": "政府补助收入",
+            "6": "投资收益",
+            "9": "其他收入",
+            "11": "收入合计",
+            "12": "业务活动成本",
+            "14": "提供服务成本",
+            "21": "管理费用",
+            "24": "筹资费用",
+            "28": "其他费用",
+            "35": "费用合计",
+            "45": "净资产变动额",
+        }
+        values = {"机构名称": name}
+        for row in fields:
+            rid = row[1]
+            if rid in maps:
+                for i,it in [(2,"上年末期"),(5,"本年累计")]:
+                    for j,jt in [(0,"非限定"),(1,"限定"),(2,"合计")]:
+                        values["{}-{}-{}".format(maps[rid],it,jt)] = row[i+j]
+        return values
+
+    def parse_ywhd1(path,name):
+        soup = load_html(path,name,"业务活动一")
+        table = soup.findAll("table")[-1]
+        rows = table.findAll("tr")
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+        #fields = [r for r in fields if len(r)==2]
+
+        values = {"机构名称": name}
+        for r in fields:
+            n, v = r[0], r[1]
+            if n in ('本年度总支出',"本年度用于慈善活动的支出","管理费用"):
+                values[n] = v
+        return values
+
+    def parse_jgjs4(path,name):
+        soup = load_html(path,name,"机构建设四")
+        rows = soup.find("table", {"id": "table1"}).findAll("tr")
+
+        fields = [
+            ("工作人员中党员数",0,2),
+            ("专职人员中党员人数",1,2),
+            ("本年度发展新吸收入党积极分子数",2,2),
+            ("本年度发展新党员人数",2,4),
+            ("党组织类型",4,2),
+            ("专职党务工作人员数",6,2),
+            ("兼职党务工作人员数",6,4),
+            ("是否建立共青团组织",10,2),
+            ("是否建立工会组织",11,2),
+            ("是否将党建工作写入章程",12,2),
+        ]
+        values = {"机构名称": name}
+        for n,r,c in fields:
+            row = rows[r]
+            v = row.findAll("td")[c].text
+            if v:
+                values[n] = v.strip()
+            else:
+                values[n] = ""
+
+        return values
+
+    def parse_jgjs3(path,name):
+        soup = load_html(path,name,"机构建设三")
+        rows = soup.findAll("table")[-1].findAll("tr")
+
+        values = {"机构名称": name}
+        v = rows[16].findAll("td")[1].text.strip()
+        values["人民币开户银行"] = v
+
+        v = rows[22].findAll("td")[2].text.strip()
+        values["信息公开"] = v
+
+        return values
+
+    def parse_jbxx1(path,name):
+        soup = load_html(path,name,"基本信息")
+        rows = soup.find("table", {"id": "tablepr"}).findAll("tr")
+
+        fields = [
+            ("理事数",21,3),
+            ("监事数",22,1),
+            ("负责人数",22,3),
+        ]
+        values = {"机构名称": name}
+        for n,r,c in fields:
+            row = rows[r]
+            v = row.findAll("td")[c].text
+            if v:
+                values[n] = v.strip()
+            else:
+                values[n] = ""
+        return values
+
+    def parse_zxjj(path,name):
+        soup = load_html(path,name,"机构建设六")
+        rows = soup.findAll("table")[0].findAll("tr")
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+
+        values = {"机构名称": name}
+        settings = [
+            ("本年度专项基金总数",0,1,4,1),
+            ("代表机构总数",2,1,4,1),
+            ("内设机构总数",4,1,4,1),
+        ]
+        for n,r,c1,c2,c3 in settings:
+            values["{}".format(n)] = fields[r][c1]
+            values["{}-本年度新设".format(n)] = fields[r][c2]
+            values["{}-本年度注销".format(n)] = fields[r+1][c3]
+
+        return values
+
+    def records_gmzcgl(path,name):
+        soup = load_html(path,name,"机构建设六")
+        rows = soup.find("table", {"id": "table5"}).findAll("tr")
+
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+
+        records = []
+        for rid,n,amt,a,b in fields:
+            records.append({
+                "机构名称": name,
+                "序号": rid,
+                "购买的资产管理产品名称": n,
+                "购买金额": amt,
+                "当年实际收益金额": a,
+                "当年实际收回金额": b
+                })
+
+        return records
+
+    def records_cygqst(path,name):
+        soup = load_html(path,name,"机构建设六")
+        rows = soup.find("table", {"id": "table3"}).findAll("tr")
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+
+        if len(fields) == 5:
+            return []
+        records = []
+        record = {"机构名称": name, "序号": 1}
+        for i, r in enumerate(fields):
+            r = r if len(r)==6 else r[1:]
+
+            if i % 5 == 0 and i > 0:
+                records.append(record)
+                record = {"机构名称": name, "序号": i + 1}
+
+            record[r[0].text.strip()] = r[1].text.strip()
+            record[r[2].text.strip()] = r[3].text.strip()
+            record[r[4].text.strip()] = r[5].text.strip()
+        records.append(record)
+        return records
+
+    def records_jsqk(path,name):
+        soup = load_html(path,name,"机构建设一（监事会）")
+        rows = soup.findAll("table")[0].findAll("tr")
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+
+        settings = [
+            ("姓名",0,2),
+            ("性别",0,4),
+            ("学历",0,6),
+            ("出生日期",1,3),
+            ("出席理事会次数",4,3),
+        ]
+
+        records = []
+        record = {"机构名称": name, "序号": 1}
+        for i, row in enumerate(fields):
+            if i % 6 == 0 and i > 0:
+                records.append(record)
+                record = {"机构名称": name, "序号": i // 6 + 1}
+            for n, r, c in settings:
+                if i % 6 == r:
+                    record[n] = row[c]
+        records.append(record)
+        return records
+
+    def records_lsqk(path,name):
+        soup = load_html(path,name,"机构建设一（理事会）")
+        bodies = soup.find("table",{"id":"tablepr"}).findAll("tbody")
+
+        settings = [
+            ("姓名",0,2),
+            ("性别",0,4),
+            ("学历",0,8),
+            ("出生日期",1,1),
+            ("理事会职务",1,3),
+            ("政治面貌",2,1),
+            ("任职起始",2,3),
+        ]
+
+        records = []
+        for i, body in enumerate(bodies):
+            rows = body.findAll("tr")
+            fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+            record = {"机构名称": name, "序号": 1}
+
+            if fields[1][3] not in ('理事长','秘书长'):
+                continue
+
+            for n,r,c in settings:
+                record[n] = re.sub("[\r\n\t ]+",' ',fields[r][c])
+            records.append(record)
+        return records
+
+    def records_ywhd5(path,name):
+        soup = load_html(path,name,"业务活动五")
+        rows = soup.findAll("table")[1].findAll("tr")
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows]
+        # print(fields)
+        records = []
+        for i, row in enumerate(fields[1:]):
+            if row[1] == "无":
+                continue
+            record = {"机构名称": name, "序号": 1+i}
+            record["受托机构"] = row[1]
+            record["受托人是否有资质在中国境内从事投资管理业务"] = row[2]
+            record["委托金额"] = row[3]
+            record["委托期限"] = row[4]
+            record["收益确定方式"] = row[5]
+            record["当年实际收益金额"] = row[6]
+            record["当年实际收回金额"] = row[7]
+            records.append(record)
+        return records
+    
+    for i,(name,did) in enumerate(zip(agents.SOCIETY_NAME,agents.DECLAREID)):    
+        if isinstance(name,str)==False or isinstance(did,str)==False or name is None or did is None or not name.strip() or not did.strip():
+            continue
+        if "基金会" not in name:
+            continue
+        print("="*120)
         try:
-            if tname == "资产负债表":
-                with open(os.path.join(path, file),"r",encoding="utf8") as reader:
-                    data = reader.read()
-                    
-                    soup = BS(data, "html.parser")
-                    rows = soup.find("table", {"id": "tablepr"}).findAll("tr") 
-                    
-                    values = {
-                    "组织名称": name,
-                    "资产总计": "",
-                    "净资产合计": "",
-                    "非限制性净资产": "",
-                    "货币资金": "",
-                    "短期投资": "",
-                    "长期股权投资": "",
-                    "长期债权投资": ""
-                    }
-                    for r in rows:
-                        fields = tuple(td.text.strip() for td in r.findAll("td"))
-                        #print(fields)
-                        for n,rid,_,v in [fields[:4], fields[4:]]:
-                            if n in values:
-                                values[n] = v
-                    
-                    if name in records:
-                        records[name].update(values)
-                    else:
-                        records[name] = values
+            values = {}
+            values.update(parse_jgjs3(path,name))
+            values.update(parse_jbxx1(path,name))            
+            values.update(parse_zcfz(path,name))
+            values.update(parse_ywhd1(path,name))
+            tabs["汇总信息"].append(values)
 
-            if tname == "业务活动表":
-                with open(os.path.join(path, file),"r",encoding="utf8") as reader:
-                    data = reader.read()
-                    
-                    soup = BS(data, "html.parser")
-                    rows = soup.find("table", {"id": "tablepr"}).findAll("tr") 
+            values = {}
+            values.update(parse_ywhd(path,name))
+            tabs["业务活动"].append(values)
 
-                    values = {
-                    "组织名称": name,
-                    "捐赠收入": "",
-                    "政府补助收入": "",
-                    "提供服务收入": "",
-                    "投资收益": "",
-                    }
+            values = {}
+            values.update(parse_zxjj(path,name))
+            tabs["专项基金"].append(values)
 
-                    for r in rows:
-                        fields = tuple(td.text.strip() for td in r.findAll("td"))
-                        if len(fields) != 8:
-                            continue
-                        if fields[0] == "其中：捐赠收入":
-                            values["捐赠收入"] = fields[-1]
-                        elif fields[0] in values:
-                            values[fields[0]] = fields[-1]
+            values = {}
+            values.update(parse_jgjs4(path,name))
+            tabs["党建"].append(values)
 
-                    if name in records:
-                        records[name].update(values)
-                    else:
-                        records[name] = values
+            values = {}
+            values.update(parse_jgjs3(path,name))
+            tabs["开户银行"].append(values)
+
+            # ##############################################
+            # # 
+            # ##############################################
+            tabs["购买资产管理"].extend(records_gmzcgl(path,name))
+            tabs["持有股权的实体情况"].extend(records_cygqst(path, name))
+            tabs["监事会情况"].extend(records_jsqk(path,name))
+            tabs["理事长秘书长"].extend(records_lsqk(path,name))
+            tabs["委托投资情况"].extend(records_ywhd5(path,name))
+            
         except Exception as ex:
-            print("Exception parsing <{}>".format(file))
+            print("Exception parsing <{}>".format(name))
+            # raise ex
             failed += 1
+        
+        # if i ==0:
+        #     break
+        # if i >= 10:
+        #     break
     print("Failed files in total <{}>".format(failed))
 
-    df = pd.DataFrame(records.values()) #[["组织名称","资产总计","净资产合计","非限制性净资产","货币资金","短期投资","长期股权投资","长期债权投资","捐赠收入","政府补助收入","提供服务收入","投资收益"]]
-    df.to_csv("result.csv",index=False)
+    writer = pd.ExcelWriter('results/深圳基金会.xlsx')
 
+    for tab, records in tabs.items():
+        df = pd.DataFrame(records) 
+        df.to_excel(writer,tab,index=False)
+    writer.save()
+
+def guangzhouReportLinks():
+    url = "https://www.gdnpo.gov.cn/home/index/indexywnjdtnew?MainMc=%u57FA%u91D1%u4F1A&MainCreID=&NJND=2018"
+    coockies = {
+        "ASP.NET_SessionId": "vj4jkfxl1vefcsc5dufvyz2x",
+        "Hm_lpvt_297a9be5a55d666e645ce55f89be171a": "1590648759",
+        "Hm_lvt_297a9be5a55d666e645ce55f89be171a": "1590648558,1590648559,1590648759,1590648759"
+    }
+    r = requests.get(url, proxies = proxy, headers = headers, cookies=coockies)
+    if r.status_code != 200:
+        return
+
+    content = r.text
+    print(content)
 
 if __name__ == '__main__':
     # shenzhenReportLinks()
     # shenzhenReports()
-    parse_reports()
+    # parse_reports()
+
+    guangzhouReportLinks()

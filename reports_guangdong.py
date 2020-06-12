@@ -10,6 +10,9 @@ import time
 import random
 import re
 
+with open("guangdong/names.txt","r",encoding="utf8") as reader:
+    NAMES = reader.read().strip().split(",")
+
 proxy = {
     "http": "http://127.0.0.1:12639",
     "https": "https://127.0.0.1:12639",
@@ -23,9 +26,9 @@ headers={
 }
 
 coockies = {
-    "ASP.NET_SessionId": "05lzfihydiqlyyneeyi1x4ag",
-    "Hm_lpvt_297a9be5a55d666e645ce55f89be171a": "1590817909",
-    "Hm_lvt_297a9be5a55d666e645ce55f89be171a": "1588858665,1588862308,1588862367,1590817630"
+    "ASP.NET_SessionId": "zh1seoirbvnpyd4lzmhiuy5n",
+    "Hm_lpvt_297a9be5a55d666e645ce55f89be171a": "1591928793",
+    "Hm_lvt_297a9be5a55d666e645ce55f89be171a": "1590648759,1590664966,1590664966,1591928786"
 }
 
 def sleep(s=1,e=2):
@@ -215,6 +218,7 @@ def parse_reports():
         fields = [tuple(td for td in r.findAll("td")) for r in rows]
 
     def parse_zcfz(r):
+
         link = r["资产负债表"]
         if not link:
             return {}
@@ -224,8 +228,14 @@ def parse_reports():
             return {}
 
         rows = soup.findAll("div",{"class": "stcontainer f12 c"})[0].findAll("table")[0].findAll("tr")
-        # fields = [tuple(td for td in r.findAll("td")) for r in rows]
         fields = [tuple(td for td in r.findAll("td")) for r in rows]
+
+        values = {"机构名称": r["名称"]}
+        for r in fields:
+            if r[1].text.strip()=="60":
+                values["{}-年初数".format("资产总计")] = r[2].find("font",{"name": "showArea"}).text.strip()
+                values["{}-期末数".format("资产总计")] = r[3].find("font",{"name": "showArea"}).text.strip()
+
         fields = [v for v in fields if len(v)==8]
         fields = [line[s:s+4] for line in fields for s in (0,4)]
 
@@ -239,7 +249,6 @@ def parse_reports():
             "15": "一年内到期的长期债权投资",
             "60": "资产总计",
         }
-        values = {"机构名称": r["名称"]}
         for _,rid,s,e in fields:
             rid = rid.text.strip()
             if rid in maps:
@@ -461,13 +470,16 @@ def parse_reports():
 
     tabs = defaultdict(list)
     for i,r in enumerate(data.to_dict("records")):
+        if r["名称"] not in NAMES:
+            continue
+
         print("="*80)
         print("<{}/{}> Parsing for <{}>".format(i+1,data.shape[0],r["名称"]))
 
-        tabs["基本信息"].append(parse_jbxx(r))
+        # tabs["基本信息"].append(parse_jbxx(r))
         # tabs["业务活动"].append(parse_ywhdb(r))
         # tabs["专项基金"].append(parse_zxjj(r))
-        # tabs["资产负债"].append(parse_zcfz(r))
+        tabs["资产负债"].append(parse_zcfz(r))
         # tabs["党组织建设"].append(parse_dzzjs(r))
         
         # values = {}

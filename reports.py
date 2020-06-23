@@ -15,6 +15,8 @@ proxy = {
     "https": "https://127.0.0.1:12639",
 }
 
+proxy = None
+
 headers={
     "Host": "www.chinanpo.gov.cn",
     "User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36",
@@ -23,8 +25,10 @@ headers={
 }
 
 SESSIONID = "5F479882D0CB076A3E3AECC98EBD038E"
+SESSIONID = "ED9A06D8C865114D077D964931DCA7D8"
 
 def sleep(s=1,e=2):
+    return 
     s = random.randint(s,e)
     print("sleep for %d seconds" % s)
     time.sleep(s)
@@ -71,17 +75,17 @@ def shenzhenReports():
     failed = 0
 
     sites = [
-        ("基本信息","/SOCSP_O/njnbJjh/toJbxx\?.*print=1&dy=1"),
-        ("机构建设一（理事会）","/SOCSP_O/njnbJjh/toLshcy\?.*print=1&dy=1"),
-        ("机构建设一（监事会）","/SOCSP_O/njnbJjh/tojshcy\?.*print=1&dy=1"),
-        ("机构建设二","/SOCSP_O/njnbJjh/tojg2\?.*print=1&dy=1"),
-        ("机构建设三","/SOCSP_O/njnbJjh/toJg3\?.*print=1&dy=1"),
-        ("机构建设四","/SOCSP_O/publicnjnb/toDjqk\?.*print=1&dy=1"),
-        ("机构建设六","/SOCSP_O/njnbJjh/toJjhnbJgjs6\?.*print=1&dy=1"),
+        #("基本信息","/SOCSP_O/njnbJjh/toJbxx\?.*print=1&dy=1"),
+        #("机构建设一（理事会）","/SOCSP_O/njnbJjh/toLshcy\?.*print=1&dy=1"),
+        #("机构建设一（监事会）","/SOCSP_O/njnbJjh/tojshcy\?.*print=1&dy=1"),
+        #("机构建设二","/SOCSP_O/njnbJjh/tojg2\?.*print=1&dy=1"),
+        #("机构建设三","/SOCSP_O/njnbJjh/toJg3\?.*print=1&dy=1"),
+        #("机构建设四","/SOCSP_O/publicnjnb/toDjqk\?.*print=1&dy=1"),
+        #("机构建设六","/SOCSP_O/njnbJjh/toJjhnbJgjs6\?.*print=1&dy=1"),
         ("业务活动一","/SOCSP_O/njnbJjh/toYwhdqk1\?.*print=1&dy=1"),
-        ("业务活动五","/SOCSP_O/njnbJjh/toYwhd5Form\?.*print=1&dy=1"),
-        ("资产负债","/SOCSP_O/publicnjnb/topublicZcfz\?.*print=1&dy=1"),
-        ("业务活动","/SOCSP_O/publicnjnb/topublicYwhd\?.*print=1&dy=1"),
+        #("业务活动五","/SOCSP_O/njnbJjh/toYwhd5Form\?.*print=1&dy=1"),
+        #("资产负债","/SOCSP_O/publicnjnb/topublicZcfz\?.*print=1&dy=1"),
+        #("业务活动","/SOCSP_O/publicnjnb/topublicYwhd\?.*print=1&dy=1"),
     ]
 
     for i,(name,did) in enumerate(zip(agents.SOCIETY_NAME,agents.DECLAREID)):
@@ -315,6 +319,25 @@ def parse_reports():
 
         return values
 
+    def parse_jz(path,name):
+        soup = load_html(path,name,"业务活动一")
+        rows = soup.find("table",{"id": "jsjzqk"}).findAll("tr")
+        fields = [tuple(td.text.strip() for td in r.findAll("td")) for r in rows[:8]]
+
+        values = {"机构名称": name}
+        settings = [
+            ("境内自然人",3),
+            ("境内法人",4),
+            ("境外自然人",6),
+            ("境外法人",7),
+        ]
+        for prefix, row in settings:
+            values["{}-现金".format(prefix)] = fields[row][1]
+            values["{}-非现金".format(prefix)] = fields[row][2]
+            values["{}-合计".format(prefix)] = fields[row][3]
+
+        return values
+
     def records_gmzcgl(path,name):
         soup = load_html(path,name,"机构建设六")
         rows = soup.find("table", {"id": "table5"}).findAll("tr")
@@ -436,41 +459,45 @@ def parse_reports():
             continue
         print("="*120)
         try:
-            values = {}
-            values.update(parse_jgjs3(path,name))
-            values.update(parse_jbxx1(path,name))            
-            values.update(parse_zcfz(path,name))
-            values.update(parse_ywhd1(path,name))
-            tabs["汇总信息"].append(values)
+            # values = {}
+            # values.update(parse_jgjs3(path,name))
+            # values.update(parse_jbxx1(path,name))            
+            # values.update(parse_zcfz(path,name))
+            # values.update(parse_ywhd1(path,name))
+            # tabs["汇总信息"].append(values)
+
+            # values = {}
+            # values.update(parse_ywhd(path,name))
+            # tabs["业务活动"].append(values)
+
+            # values = {}
+            # values.update(parse_zxjj(path,name))
+            # tabs["专项基金"].append(values)
+
+            # values = {}
+            # values.update(parse_jgjs4(path,name))
+            # tabs["党建"].append(values)
+
+            # values = {}
+            # values.update(parse_jgjs3(path,name))
+            # tabs["开户银行"].append(values)
 
             values = {}
-            values.update(parse_ywhd(path,name))
-            tabs["业务活动"].append(values)
-
-            values = {}
-            values.update(parse_zxjj(path,name))
-            tabs["专项基金"].append(values)
-
-            values = {}
-            values.update(parse_jgjs4(path,name))
-            tabs["党建"].append(values)
-
-            values = {}
-            values.update(parse_jgjs3(path,name))
-            tabs["开户银行"].append(values)
+            values.update(parse_jz(path,name))
+            tabs["捐赠情况"].append(values)
 
             # ##############################################
             # # 
             # ##############################################
-            tabs["购买资产管理"].extend(records_gmzcgl(path,name))
-            tabs["持有股权的实体情况"].extend(records_cygqst(path, name))
-            tabs["监事会情况"].extend(records_jsqk(path,name))
-            tabs["理事长秘书长"].extend(records_lsqk(path,name))
-            tabs["委托投资情况"].extend(records_ywhd5(path,name))
+            # tabs["购买资产管理"].extend(records_gmzcgl(path,name))
+            # tabs["持有股权的实体情况"].extend(records_cygqst(path, name))
+            # tabs["监事会情况"].extend(records_jsqk(path,name))
+            # tabs["理事长秘书长"].extend(records_lsqk(path,name))
+            # tabs["委托投资情况"].extend(records_ywhd5(path,name))
             
         except Exception as ex:
             print("Exception parsing <{}>".format(name))
-            # raise ex
+            raise ex
             failed += 1
         
         # if i ==0:
@@ -479,7 +506,7 @@ def parse_reports():
         #     break
     print("Failed files in total <{}>".format(failed))
 
-    writer = pd.ExcelWriter('results/深圳基金会.xlsx')
+    writer = pd.ExcelWriter('results/深圳基金会-接受捐赠.xlsx')
 
     for tab, records in tabs.items():
         df = pd.DataFrame(records) 
@@ -501,8 +528,8 @@ def guangzhouReportLinks():
     print(content)
 
 if __name__ == '__main__':
-    # shenzhenReportLinks()
+    #shenzhenReportLinks()
     # shenzhenReports()
-    # parse_reports()
+    parse_reports()
 
-    guangzhouReportLinks()
+    # guangzhouReportLinks()

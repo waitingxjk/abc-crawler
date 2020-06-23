@@ -10,8 +10,8 @@ import time
 import random
 import re
 
-with open("guangdong/names.txt","r",encoding="utf8") as reader:
-    NAMES = reader.read().strip().split(",")
+# with open("guangdong/names.txt","r",encoding="utf8") as reader:
+#     NAMES = reader.read().strip().split(",")
 
 proxy = {
     "http": "http://127.0.0.1:12639",
@@ -26,9 +26,9 @@ headers={
 }
 
 coockies = {
-    "ASP.NET_SessionId": "zh1seoirbvnpyd4lzmhiuy5n",
-    "Hm_lpvt_297a9be5a55d666e645ce55f89be171a": "1591928793",
-    "Hm_lvt_297a9be5a55d666e645ce55f89be171a": "1590648759,1590664966,1590664966,1591928786"
+    "ASP.NET_SessionId": "2tmh5m1amcdlqz5rmbg2awlf",
+    "Hm_lpvt_297a9be5a55d666e645ce55f89be171a": "1592882756",
+    "Hm_lvt_297a9be5a55d666e645ce55f89be171a": "1590674626,1590674627,1592881178,1592882524"
 }
 
 def sleep(s=1,e=2):
@@ -42,8 +42,9 @@ def guangzhouReportLinks():
     total = 25
     for i in range(1, 25):
         print("Loading page {}/{}".format(i, total))
+        print(url.format(i))
 
-        r = requests.get(url.format(i), proxies = proxy, headers = headers, cookies=coockies)
+        r = requests.get(url.format(i), headers = headers, cookies=coockies)
         if r.status_code != 200:
             continue
         content = r.text
@@ -106,7 +107,7 @@ def parse_frames():
         link = url + link[link.rfind("/"):]
         print("<{}/{}> downloading frame information for <{}>: <{}>".format(i+1,data.shape[0],name, link))
 
-        r = requests.get(link, proxies = proxy, headers = headers, cookies=coockies)
+        r = requests.get(link, headers = headers, cookies=coockies)
         if r.status_code != 200:
             continue
         soup = BS(r.text, "html.parser")
@@ -124,7 +125,7 @@ def parse_frames():
 
 def downloadHTML(link):
     print("Downloading from <{}>".format(link))
-    r = requests.get(link, proxies = proxy, headers = headers, cookies=coockies)
+    r = requests.get(link, headers = headers, cookies=coockies)
     if r.status_code != 200:
         return None
     return BS(r.text, "html.parser")
@@ -203,19 +204,19 @@ def parse_reports():
 
         return values
 
-    def parse_gysy(r):
-        """各机构字段定义不一致"""
-        link = r["公益事业（慈善活动）支出和管理费用情况"]
-        if not link:
-            return {}
+    # def parse_gysy(r):
+    #     """各机构字段定义不一致"""
+    #     link = r["公益事业（慈善活动）支出和管理费用情况"]
+    #     if not link:
+    #         return {}
 
-        soup = downloadHTML(url + link)
-        if not soup:
-            return {}
-        return
+    #     soup = downloadHTML(url + link)
+    #     if not soup:
+    #         return {}
+    #     return
 
-        rows = soup.find("div",{"id": "Div1"}).findAll("table")[-1].findAll("tr")[1:9]
-        fields = [tuple(td for td in r.findAll("td")) for r in rows]
+    #     rows = soup.find("div",{"id": "Div1"}).findAll("table")[-1].findAll("tr")[1:9]
+    #     fields = [tuple(td for td in r.findAll("td")) for r in rows]
 
     def parse_zcfz(r):
 
@@ -380,6 +381,36 @@ def parse_reports():
 
         return values
 
+    def parse_gysy(r):
+        link = r["公益事业（慈善活动）支出和管理费用情况"]
+        if not link:
+            return {}
+
+        soup = downloadHTML(url + link)
+        if not soup:
+            return {}
+
+        
+        rows = soup.find("div",{"class": "stcontainer f14 c"}).find("table").findAll("tr")
+        rows = [r.findAll("td") for r in rows[:10]]
+
+        items = [
+            ("境内自然人",3),
+            ("境内法人",4),
+            ("境外自然人",7),
+            ("境外法人",8),
+        ]
+        values = {
+            "机构名称": r["名称"],
+            # "信息公开制度": tds[2].find("font",{"name": "showArea"}).text.strip()
+        }
+        for prefix, row in items:
+            tds = rows[row]
+            values["{}-现金".format(prefix)] = tds[1].find("font",{"name": "showArea"}).text.strip()
+            values["{}-非现金".format(prefix)] = tds[2].find("font",{"name": "showArea"}).text.strip()
+            values["{}-合计".format(prefix)] = tds[3].find("font",{"name": "showArea"}).text.strip()
+
+        return values
 
     def records_lshzk(r):
         link = r["理事会召开情况"]
@@ -470,8 +501,8 @@ def parse_reports():
 
     tabs = defaultdict(list)
     for i,r in enumerate(data.to_dict("records")):
-        if r["名称"] not in NAMES:
-            continue
+        # if r["名称"] not in NAMES:
+        #     continue
 
         print("="*80)
         print("<{}/{}> Parsing for <{}>".format(i+1,data.shape[0],r["名称"]))
@@ -479,7 +510,7 @@ def parse_reports():
         # tabs["基本信息"].append(parse_jbxx(r))
         # tabs["业务活动"].append(parse_ywhdb(r))
         # tabs["专项基金"].append(parse_zxjj(r))
-        tabs["资产负债"].append(parse_zcfz(r))
+        # tabs["资产负债"].append(parse_zcfz(r))
         # tabs["党组织建设"].append(parse_dzzjs(r))
         
         # values = {}
@@ -492,12 +523,12 @@ def parse_reports():
         # tabs["理事会召开"].extend(records_lshzk(r))
         
         # 有问题
-        # parse_gysy(r)
+        tabs["公益事业"].append(parse_gysy(r))
 
-        # if i == 9:
+        # if i == 0:
         #     break
 
-    writer = pd.ExcelWriter('guangdong/广东基金会.xlsx')
+    writer = pd.ExcelWriter('guangdong/广东基金会-公益事业.xlsx')
 
     for tab, records in tabs.items():
         df = pd.DataFrame(records) 
@@ -505,7 +536,7 @@ def parse_reports():
     writer.save()
 
 if __name__ == '__main__':
-    # guangzhouReportLinks()
-    # guangzhouReports()
-    # parse_frames()
+    #guangzhouReportLinks()
+    #guangzhouReports()
+    #parse_frames()
     parse_reports()
